@@ -1,0 +1,697 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css1/main.css')  }}" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+  <link rel="stylesheet"  href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/x-icon" href= "{{ url_for('static', filename='crisnpr11.svg')  }}" />
+  <title>CriSNPr</title>
+
+  <script  src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+<style>
+
+.click_me {
+/*  background:  linear-gradient(to right,    #ff4b5a 0%,  #ff4b5a 28%, #2c6dd5 91%, #2c6dd5 100%);*/
+  /*background: linear-gradient(to right, #772953 0%, # 28%, #EB6536 100%,#E95420 100% );*/
+  background: linear-gradient(to right, #E95420 0%, #EB6536 28%, #925375 100%,#772953 100% );
+
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+
+}
+  .navbar-custom {
+    background: linear-gradient(to right, #772953 0%, #925375 28%, #EB6536 100%,#E95420 100% );
+
+/*    background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);*/
+    /*background: linear-gradient(to right,    #ff4b5a 0%,  #ff4b5a 28%, #2c6dd5 91%, #2c6dd5 100%);*/
+
+
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  padding: 0.8rem 1rem;
+}
+/* change the link color and add padding for height */
+.navbar-custom .navbar-nav .nav-link {
+  color: blueviolet;
+  padding: 1rem 1rem;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+  border:1px solid whitesmoke;  
+
+
+}.navbar-custom {
+  background-color: blueviolet;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: rgba(255,255,255,.8);
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: red;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+}
+
+/* for dropdown only - change the color of droodown */
+.navbar-custom .dropdown-menu {
+  background-color: #ff5500;
+}
+.navbar-custom .dropdown-item {
+  color: #ffffff;
+}
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+  color: #333333;
+  background-color: rgba(255,255,255,.5);
+}
+.alert-error {
+  padding: 12px;
+  font-size: 1.5rem;
+  margin-top: 10px;
+
+  margin-bottom: 1px;
+  color: red;
+  text-align: center;
+}
+.alert-info {
+  padding: 2px;
+  font-size: 1.2rem;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  color: black;
+  text-align: center;
+}
+
+
+
+
+table.dataframe, .dataframe th, .dataframe td {
+    border:1px solid ;
+    border-bottom: 1px solid #C8C8C8;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 40px;
+    font-size: 0.8em;
+    table-layout: fixed; 
+}
+
+table,  th,  td {
+    border:1px solid ;
+    border-bottom: 1px solid #C8C8C8;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 40px;
+    font-size: 0.8em;
+    table-layout: fixed; 
+}
+.sgrna th  {
+background-color:#e4e4b1;
+color: #800000;
+font-weight: bold;
+
+}
+.sgrna td  {
+
+color: black;
+}
+
+.primer th {
+background-color: #e4e4b1;
+color: #800000;
+}
+
+.primer td {
+
+color: blue;
+}
+
+
+
+td:nth-child(8)	{  word-break: break-all; }
+.primer tbody>td>:nth-child(6){   word-break: break-all; }
+
+tr:nth-child(odd)		{ background-color:#eee; }
+tr:nth-child(even)	{ background-color:#fff; }
+
+
+
+.primer tbody>tr>:nth-child(-n+6)   {
+ color:rgb(92, 4, 95);
+
+}
+
+
+
+
+tr:hover            { background-color: #ffff99;}
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 70px;
+   background-color: #2c6dd5; 
+   font-size: 25px;
+   color:peachpuff;
+   text-align: center;
+} 
+
+
+
+
+
+</style>
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-sm navbar-custom bg-primary ">
+      <!-- Brand/logo -->
+     <!-- <a class="navbar-brand" href="http://jatayuv2.igib.res.in/">
+        <img src="/static/images/jatayu1.png" alt="logo" style="width:60px; "> 
+      </a>-->
+      
+      <!-- Links -->
+      <ul class="navbar-nav ms-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/static/images/JATAYU_2_instructions.pdf" style="color: #772953;font-size: 30px;">Instructions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/static/images/JATAYU_2_instructions.pdf" style="color: #772953;font-size: 30px;">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+    </nav>
+
+   <!-- <div id="mySeqViewer1" class="SeqViewerApp" data-autoload> <a href="?embedded=true&appname=testapp1&id=NC_000001"></a> </div>-->
+ 
+   
+   
+    <div class="s010" >
+        
+      <div class="table-responsive-md" style="overflow: fixed; padding-top: 5px; margin-top: 70px; padding-left: 40px;font-size: 25px; font-weight: bold; font-family: Poppins;" >
+        <div id="sviewer_xahvx" class="SeqViewerApp" data-autoload style="margin-bottom: 25px;">
+          <a href="?embedded=true&id={{chrom}}&tracks=[key:sequence_track,name:T15993,display_name:Sequence,id:T15993,dbname:GenBank,category:Sequence,subcategory:Assembly,annots:NA,ShowLabel:false,ColorGaps:false,shown:true,order:1][key:gene_model_track,name:T2275599,display_name:Genes\, NCBI Homo sapiens Annotation Release 109.20211119,id:T2275599,dbname:SADB,category:Genes,subcategory:NCBI Genes,annots:NA000281575.1,Options:GeneOnly,CDSProductFeats:false,NtRuler:true,AaRuler:true,HighlightMode:2,ShowLabel:true,shown:true,order:53][key:SNP_track,name:T2164428,display_name:Clinical\, dbSNP b155 v2,id:T2164428,dbname:VDB,category:Variation,subcategory:dbSNP Build 155 (Homo sapiens Annotation Release 109),annots:NA000193272.7\2320,Layout:Adaptive,shown:true,order:113][key:SNP_track,name:T2164437,display_name:Live RefSNPs\, dbSNP b155 v2,id:T2164437,dbname:VDB,category:Variation,subcategory:dbSNP Build 155 (Homo sapiens Annotation Release 109),annots:NA000193272.7\2317,Layout:Adaptive,shown:true,order:150,comments:{{comments1}} |{{var_pos}}][key:feature_track,name: primer ,display_name:PRIMER,Layout:Adaptive,LinkedFeat:Packed,read_range:44372360 ]&assm_context=GCF_000001405.39&mk={{coo1}}|crRNA|green,{{coo1_cas12}}|Cas12|red,{{primer1_fw}}|Primer1 Forward|blue,{{primer1_rw}}|Primer1 Reverse|blue,{{primer2_fw}}|Primer2 Forward|red,{{primer2_rw}}|Primer2 Reverse|red,|08&v={{coo}}&c=666699&select=null&slim=0&appname=CriSNPr"></a>
+          
+        </div>
+        
+        <div class="container"  >
+          <h2 style="margin-top: 40px;margin-left : -100px;padding-left   : -20px;color: #377ba8;" >SNP information </h2 >
+            <div class="row"style="margin-right:10px;margin-top: 40px;  ">
+              <div class="col-sm-7 col-md-4 col-lg-3 col-xl-3 bg-contain border-dark rounded rounded-3 border border-2"style="margin-left:-90px;padding-left: -10px;margin-bottom:150px;color:brown;background-color:#34c6eb; ">
+              <!--  background-color:#34c6eb;-->
+              <h3 style= "padding-top: 20px;font-size:20px;">Organism : <em> Homo sapiens </em></h3>
+              <h3  style="font-size:20px;" >rsID :    >  
+            {{rsid}} </a></h3 >
+            <h3 style= "font-size:20px;">Alleles : {{allele}} </h3 >
+              <h3 style="font-size:20px;">Position : {{chr}}:{{var_pos+1}} (GRCh38.p13) </h3 >
+                <h3 style="font-size:20px;">Gene : {{gene}} </h3 >
+                  <h3 style="font-size:20px;">Disease : {{disease}} </h3 > 
+               </div>
+                  
+             </div>
+        </div>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Fn/enFnCas9</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">AaCas12b</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile1" type="button" role="tab" aria-controls="pills-profile1" aria-selected="false">LbCas12a</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Cas14a</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact2-tab" data-bs-toggle="pill" data-bs-target="#pills-contact2" type="button" role="tab" aria-controls="pills-contact2" aria-selected="false">Cas14a/ssDNA</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact1-tab" data-bs-toggle="pill" data-bs-target="#pills-contact1" type="button" role="tab" aria-controls="pills-contact1" aria-selected="false">LwCas13a</button>
+          </li>
+
+
+
+
+        </ul>
+       
+
+
+        <div class="tab-content" id="pills-tabContent">
+          
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            
+           
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">sgRNA</h2>
+            <div id="sviewer_xahvx1" class="SeqViewerApp1" data-autoload ">
+              <a href="?embedded=true&id={{chrom}}&tracks=[key:sequence_track,name:T15993,display_name:Sequence,id:T15993,dbname:GenBank,category:Sequence,subcategory:Assembly,annots:NA,ShowLabel:false,ColorGaps:false,shown:true,order:1][key:gene_model_track,name:T2275599,display_name:Genes\, NCBI Homo sapiens Annotation Release 109.20211119,id:T2275599,dbname:SADB,category:Genes,subcategory:NCBI Genes,annots:NA000281575.1,Options:GeneOnly,CDSProductFeats:false,NtRuler:true,AaRuler:true,HighlightMode:2,ShowLabel:true,shown:true,order:53][key:SNP_track,name:T2164428,display_name:Clinical\, dbSNP b155 v2,id:T2164428,dbname:VDB,category:Variation,subcategory:dbSNP Build 155 (Homo sapiens Annotation Release 109),annots:NA000193272.7\2320,Layout:Adaptive,shown:true,order:113][key:SNP_track,name:T2164437,display_name:Live RefSNPs\, dbSNP b155 v2,id:T2164437,dbname:VDB,category:Variation,subcategory:dbSNP Build 155 (Homo sapiens Annotation Release 109),annots:NA000193272.7\2317,Layout:Adaptive,shown:true,order:150,comments:{{comments1}} |{{var_pos}}][key:feature_track,name: primer ,display_name:PRIMER,Layout:Adaptive,LinkedFeat:Packed,read_range:44372360 ]&assm_context=GCF_000001405.39&mk={{coo1}}|crRNA|green,{{coo1_cas12}}|Cas9|red,{{primer1_fw}}|Primer1 Forward|blue,{{primer1_rw}}|Primer1 Reverse|blue,{{primer2_fw}}|Primer2 Forward|red,{{primer2_rw}}|Primer2 Reverse|red,|08&v={{coo}}&c=666699&select=null&slim=0&appname=CriSNPr"></a>
+              
+            </div>
+                       <table class="sgrna"> 
+                         <tr>
+                        {% for column in data1.columns %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                      </tr>
+                      {% for idx, row in data1.iterrows() %}
+                      <tr>
+ 
+                          {% for colname in data1.columns %}
+                          {% if loop.index == 7 %} 
+                          <td class="off"><a href="{{ url_for('offtargets',my_var=row[0], my_var1=row[5],my_var2='Human' ) }}" target="_blank"> {{row[6]}} </a></td>
+                          {% else %}
+      
+                          <td>{{row[colname]}}</td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                      {% endfor %}
+
+                     </table>
+                     <p style="color: black;font-weight: 100;  font-size: 20px;">* Nucleotide in <b style="color: orangered;font-size: 25px;";>red</b> and <b style="color:yellowgreen ;font-size:25px;">green</b> color represent actual SNV and synthetic mutation, respectively.</p>
+
+
+            {% for table in tables[:1] %}
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">{{titles[loop.index]}}</h2>
+
+                 {{ table|safe }}
+
+            {% endfor %}
+
+    
+        
+          <p style="color: black;font-size: 20px;margin-top: 0px;padding-top: 0px;">*In-vitro cleavage (IVC) products after FnCas9 activity.  </p>   
+  
+          <p style="color: red;font-size: 20px;"> Select any primer set from the above table.  </p>   
+          <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;"></div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">sgRNA</h2>
+
+            <table class="sgrna"> 
+              <tr>
+             {% for column in cas12b.columns %}
+             <th>{{ column }}</th>
+             {% endfor %}
+           </tr>
+           {% for idx, row in cas12b.iterrows() %}
+           <tr>
+
+               {% for colname in cas12b.columns %}
+               {% if loop.index == 7 %} 
+               <td class="off"><a href="{{ url_for('offtargets',my_var=row[0], my_var1=row[5] ) }}" target="_blank"> {{row[6]}} </a></td>
+               {% else %}
+
+               <td>{{row[colname]}}</td>
+               {% endif %}
+               {% endfor %}
+           </tr>
+           {% endfor %}
+
+          </table>
+
+          <p style="color: black;font-weight: 100;  font-size: 20px;">* Nucleotide in <b style="color: orangered;font-size: 25px;";>red</b> and <b style="color:yellowgreen ;font-size:25px;">green</b> color represent actual SNV and synthetic mutation, respectively.</p>
+            
+            {% for table in tables[1:2] %}
+          
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">{{titles[loop.index]}}</h2>
+            {{ table|safe }}
+                     
+              {% endfor %}
+        
+        
+  
+          <p style="color: red;font-size: 20px;"> Select any primer set from the above table.  </p>   
+          <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;"></div>
+
+
+
+          </div>
+          <div class="tab-pane fade" id="pills-profile1" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">sgRNA</h2>
+
+            <table class="sgrna"> 
+              <tr>
+             {% for column in cas12a.columns %}
+             <th>{{ column }}</th>
+             {% endfor %}
+           </tr>
+           {% for idx, row in cas12a.iterrows() %}
+           <tr>
+
+               {% for colname in cas12a.columns %}
+               {% if loop.index == 7 %} 
+               <td class="off"><a href="{{ url_for('offtargets',my_var=row[0], my_var1=row[5] ) }}" target="_blank"> {{row[6]}} </a></td>
+               {% else %}
+
+               <td>{{row[colname]}}</td>
+               {% endif %}
+               {% endfor %}
+           </tr>
+           {% endfor %}
+
+          </table>
+          <p style="color: black;font-weight: 100;  font-size: 20px;">* Nucleotide in <b style="color: orangered;font-size: 25px;";>red</b> and <b style="color:yellowgreen ;font-size:25px;">green</b> color represent actual SNV and synthetic mutation, respectively.</p>
+
+            
+            {% for table in tables[2:3] %}
+          
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">{{titles[loop.index]}}</h2>
+            {{ table|safe }}
+                     
+              {% endfor %}
+        
+        
+  
+          <p style="color: red;font-size: 20px;"> Select any primer set from the above table.  </p>   
+          <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;"></div>
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <table class="sgrna"> 
+              <tr>
+             {% for column in cas14.columns %}
+             <th>{{ column }}</th>
+             {% endfor %}
+           </tr>
+           {% for idx, row in cas14.iterrows() %}
+           <tr>
+
+               {% for colname in cas14.columns %}
+               {% if loop.index == 7 %} 
+               <td class="off"><a href="{{ url_for('offtargets',my_var=row[0], my_var1=row[5] ) }}" target="_blank"> {{row[6]}} </a></td>
+               {% else %}
+
+               <td>{{row[colname]}}</td>
+               {% endif %}
+               {% endfor %}
+           </tr>
+           {% endfor %}
+
+          </table>
+          <p style="color: black;font-weight: 100;  font-size: 20px;">* Nucleotide in <b style="color: orangered;font-size: 25px;";>red</b> and <b style="color:yellowgreen ;font-size:25px;">green</b> color represent actual SNV and synthetic mutation, respectively.</p>
+
+            {% for table in tables[3:4] %}
+          
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">{{titles[loop.index]}}</h2>
+            {{ table|safe }}
+                     
+              {% endfor %}
+        
+        
+  
+          <p style="color: red;font-size: 20px;"> Select any primer set from the above table.  </p>   
+          <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;"></div>
+
+
+
+
+          </div>
+
+          <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact2-tab">
+            <table class="sgrna"> 
+              <tr>
+             {% for column in cas14ss.columns %}
+             <th>{{ column }}</th>
+             {% endfor %}
+           </tr>
+           {% for idx, row in cas14ss.iterrows() %}
+           <tr>
+
+               {% for colname in cas14ss.columns %}
+               {% if loop.index == 7 %} 
+               <td class="off"><a href="{{ url_for('offtargets',my_var=row[0], my_var1=row[5] ) }}" target="_blank"> {{row[6]}} </a></td>
+               {% else %}
+
+               <td>{{row[colname]}}</td>
+               {% endif %}
+               {% endfor %}
+           </tr>
+           {% endfor %}
+
+          </table>
+          <p style="color: black;font-weight: 100;  font-size: 20px;">* Nucleotide in <b style="color: orangered;font-size: 25px;";>red</b> and <b style="color:yellowgreen ;font-size:25px;">green</b> color represent actual SNV and synthetic mutation, respectively.</p>
+
+            {% for table in tables[4:5] %}
+          
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">{{titles[loop.index]}}</h2>
+            {{ table|safe }}
+                     
+              {% endfor %}
+        
+        
+  
+          <p style="color: red;font-size: 20px;"> Select any primer set from the above table.  </p>   
+          <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;"></div>
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+          <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <table class="sgrna"> 
+              <tr>
+             {% for column in cas13.columns %}
+             <th>{{ column }}</th>
+             {% endfor %}
+           </tr>
+           {% for idx, row in cas13.iterrows() %}
+           <tr>
+
+               {% for colname in cas13.columns %}
+               {% if loop.index == 7 %} 
+               <td class="off"><a href="{{ url_for('offtargets',my_var=row[0], my_var1=row[5] ) }}" target="_blank"> {{row[6]}} </a></td>
+               {% else %}
+
+               <td>{{row[colname]}}</td>
+               {% endif %}
+               {% endfor %}
+           </tr>
+           {% endfor %}
+
+          </table>
+          <p style="color: black;font-weight: 100;  font-size: 20px;">* Nucleotide in <b style="color: orangered;font-size: 25px;";>red</b> and <b style="color:yellowgreen ;font-size:25px;">green</b> color represent actual SNV and synthetic mutation, respectively.</p>
+
+            {% for table in tables[5:6] %}
+          
+            <h2 style="color: #377ba8;margin: 10;font-size: 1.2em; padding-bottom: 5px;">{{titles[loop.index]}}</h2>
+            {{ table|safe }}
+                     
+              {% endfor %}
+        
+        
+  
+          <p style="color: red;font-size: 20px;"> Select any primer set from the above table.  </p>   
+          <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;"></div>
+
+
+
+
+          </div>
+
+        </div>
+
+
+
+        </div>
+
+
+
+
+
+
+     </div>
+            
+          
+    </div>
+    <script src="static/js1/extention/choices.js"></script>
+    <script type="text/javascript" src="https://www.ncbi.nlm.nih.gov/projects/sviewer/js/sviewer.js"> </script>
+
+    <script>
+
+$(document).ready(function() {
+  $(".sgrna td:nth-child(1)").each(function() {
+      var sequence2=  $(this).text();  // $(".sgrna td:nth-child(1)").text(); //.html("NEW");
+      var diff_pos= $(this).parent().find('td:nth-last-child(2)').text();
+      var diff_pos2= $(this).parent().find('td:nth-last-child(1)').text();
+      var cas_system= $(this).parent().find('td:nth-last-child(4)').text();
+      var diff_pos1 = Number(diff_pos) + 1 ;
+      var diff_pos22 = Number(diff_pos2) + 1 ;
+      var len1 = sequence2.length;
+      //var s1 = $('[sequence2$='GG']') ;
+      //var s1=("[sequence2^='CC']"); 
+      //var s1 = sequence2.endsWith("GG");
+      //var s11 = sequence2.startsWith("TT");
+     //    
+     // var sequence21 =sequence2; 
+     // var se1 =  sequence21.substr(0,14);
+     // var se2 =  sequence21.substr(14,1);
+     // var se3 =  sequence21.substr(16,5);
+     // var se4 =  sequence21.substr(20,23);
+      //var seq12 = se1.fontcolor("purple") + se2.fontcolor("red") + se3.fontcolor("blue") + " " +  se4.fontcolor("orange");
+      
+     if (cas_system === "enFnCas9" ||  cas_system === "Fn/enFnCas9" ){
+      if ( Number(diff_pos) < Number(diff_pos2)){
+      var seq12 =   sequence2.slice(0,diff_pos).fontcolor("black") +  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big() +  sequence2.slice(diff_pos1,diff_pos2).fontcolor("black")+  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+        sequence2.slice(diff_pos22,20).fontcolor("black") +   " " +sequence2.slice(20,23).fontcolor("orchid");
+      $(this).html(seq12);
+
+      }
+      else{
+        var seq12 =   sequence2.slice(0,diff_pos2).fontcolor("black") +  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+ sequence2.slice(diff_pos22,diff_pos).fontcolor("black")+  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big()+    sequence2.slice(diff_pos1,20).fontcolor("black") +   " " +sequence2.slice(20,23).fontcolor("orchid");
+      $(this).html(seq12);
+
+
+
+      }
+      }
+      else if ( cas_system === "AaCas12b") {
+        if ( Number(diff_pos) < Number(diff_pos2)){
+          var seq12 = sequence2.slice(0,3).fontcolor("orchid") +   " " + 
+           sequence2.slice(3,diff_pos).fontcolor("black") +  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big() +  sequence2.slice(diff_pos1,diff_pos2).fontcolor("black")+  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+        sequence2.slice(diff_pos22,23).fontcolor("black") ;
+      $(this).html(seq12);
+
+      }
+      else{
+        var seq12 = sequence2.slice(0,3).fontcolor("orchid") +   " " +  sequence2.slice(3,diff_pos2).fontcolor("black") +  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+ sequence2.slice(diff_pos22,diff_pos).fontcolor("black")+  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big()+    sequence2.slice(diff_pos1,23).fontcolor("black") ;
+      $(this).html(seq12);
+      }
+      }
+      else if ( cas_system === "LbCas12a") {
+          var seq12 = sequence2.slice(0,4).fontcolor("orchid") +   " " +
+           sequence2.slice(4,diff_pos).fontcolor("black") +  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big() +  sequence2.slice(diff_pos1,22).fontcolor("black") ;
+      $(this).html(seq12);
+
+      
+      
+      }
+      else if (cas_system === "LwCas13a") {
+        if ( Number(diff_pos) < Number(diff_pos2)){
+      var seq12 = sequence2.slice(0,diff_pos).fontcolor("black") +  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big() +  sequence2.slice(diff_pos1,diff_pos2).fontcolor("black")+  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+        sequence2.slice(diff_pos22,29).fontcolor("black") ;
+      $(this).html(seq12);
+
+      }
+      else{
+        var seq12 =   sequence2.slice(0,diff_pos2).fontcolor("black") +  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+ sequence2.slice(diff_pos22,diff_pos).fontcolor("black")+  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big()+    sequence2.slice(diff_pos1,29).fontcolor("black") ;
+      $(this).html(seq12);
+      }
+      }
+      else if (cas_system === "Cas14a") {
+
+        if ( Number(diff_pos) < Number(diff_pos2)){
+      var seq12 = sequence2.slice(0,4).fontcolor("orchid") +   " " +  sequence2.slice(4,diff_pos).fontcolor("black") +  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big() +  sequence2.slice(diff_pos1,diff_pos2).fontcolor("black")+  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+        sequence2.slice(diff_pos22,24).fontcolor("black") ;
+      $(this).html(seq12);
+
+      }
+      else{
+        var seq12 = sequence2.slice(0,4).fontcolor("orchid") +   " " +  sequence2.slice(4,diff_pos2).fontcolor("black") +  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+ sequence2.slice(diff_pos22,diff_pos).fontcolor("black")+  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big()+    sequence2.slice(diff_pos1,24).fontcolor("black") ;
+      $(this).html(seq12);
+      }
+      }
+      else if (cas_system === "Cas14a/ssDNA") {
+        if ( Number(diff_pos) < Number(diff_pos2)){
+      var seq12 = sequence2.slice(0,diff_pos).fontcolor("black") +  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big() +  sequence2.slice(diff_pos1,diff_pos2).fontcolor("black")+  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+        sequence2.slice(diff_pos22,29).fontcolor("black") ;
+      $(this).html(seq12);
+
+      }
+      else{
+        var seq12 =   sequence2.slice(0,diff_pos2).fontcolor("black") +  sequence2.slice(diff_pos2,diff_pos22).fontcolor("yellowgreen").big()+ sequence2.slice(diff_pos22,diff_pos).fontcolor("black")+  sequence2.slice(diff_pos,diff_pos1).fontcolor("orangered").big()+    sequence2.slice(diff_pos1,29).fontcolor("black") ;
+      $(this).html(seq12);
+      }
+      }
+
+      
+
+
+
+      //$('.sgrna tr').find('td:eq(11),th:eq(11)').remove();
+
+      //$(this).children('td:nth-child(11)').filter();
+
+      //$(this).find('td:eq(11)').remove();
+
+      //$(this).parent().find('td:nth-child(11)').remove();
+       //var seq12 =   sequence2.substr(0,20).fontcolor("green") +   " " +sequence2.substr(20,23).fontcolor("red");
+      //sequence2.substr(16,1).fontcolor("orange") +" " +sequence2.substr(17,20).fontcolor("red");
+      //$("#muatated").html(seq1);
+
+
+      //}
+      //else {    
+        //var seq12 =   sequence2.substr(0,3).fontcolor("red") +   " " +sequence2.substr(3,23).fontcolor("green");
+        //$(this).html(seq12);
+
+          //             }
+      
+  });
+ $('.sgrna th:nth-last-child(-n+2), .sgrna td:nth-last-child(-n+2)').remove();
+
+
+    });
+    $(document).ready( function () {
+    $('#table1').DataTable();
+} );
+
+</script>
+
+  </body> 
+</html>

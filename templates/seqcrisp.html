@@ -1,0 +1,331 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css1/main.css')  }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/"> 
+  <link href="Sticky%20Footer%20Template%20for%20Bootstrap_files/bootstrap.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/x-icon" href= "{{ url_for('static', filename='crisnpr11.svg')  }}" />
+  <title>CriSNPr</title>
+
+  <!-- Custom styles for this template -->
+  <link href="Sticky%20Footer%20Template%20for%20Bootstrap_files/sticky-footer.css" rel="stylesheet">
+  <script>
+    $(document).ready(function(){
+        $(document).on('click','.click_me',function(e){
+          e.preventDefault();
+          var search_val = $(this).attr('data-value');
+          
+          $('#search').val(search_val);
+        });
+        $(document).on('click','.btn-delete',function(e){
+          $('#search').val('');
+        });
+        
+      });
+  </script>   
+<style>
+
+div#loading {
+  display: none;
+    width: 500px;
+    height:180px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+    background: url(/static/Vanilla-2s-289px.gif) no-repeat;
+   position: absolute;
+    cursor: wait;
+   
+  }
+
+
+.click_me {
+/*  background:  linear-gradient(to right,    #ff4b5a 0%,  #ff4b5a 28%, #2c6dd5 91%, #2c6dd5 100%);*/
+  /*background: linear-gradient(to right, #772953 0%, # 28%, #EB6536 100%,#E95420 100% );*/
+  background: linear-gradient(to right, #E95420 0%, #EB6536 28%, #925375 100%,#772953 100% );
+
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+
+}
+  .navbar-custom {
+    background: linear-gradient(to right, #772953 0%, #925375 28%, #EB6536 100%,#E95420 100% );
+
+/*    background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);*/
+    /*background: linear-gradient(to right,    #ff4b5a 0%,  #ff4b5a 28%, #2c6dd5 91%, #2c6dd5 100%);*/
+
+
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  padding: 0.8rem 1rem;
+}
+/* change the link color and add padding for height */
+.navbar-custom .navbar-nav .nav-link {
+  color: blueviolet;
+  padding: 1rem 1rem;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+  border:1px solid whitesmoke;  
+
+
+}.navbar-custom {
+  background-color: blueviolet;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: rgba(255,255,255,.8);
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: red;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+}
+
+/* for dropdown only - change the color of droodown */
+.navbar-custom .dropdown-menu {
+  background-color: #ff5500;
+}
+.navbar-custom .dropdown-item {
+  color: #ffffff;
+}
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+  color: #333333;
+  background-color: rgba(255,255,255,.5);
+}
+.alert-error {
+  padding: 12px;
+  font-size: 1.5rem;
+  margin-top: 10px;
+
+  margin-bottom: 1px;
+  color: red;
+  text-align: center;
+}
+.alert-info {
+  padding: 2px;
+  font-size: 1.2rem;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  color: black;
+  text-align: center;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 70px;
+   background-color: #924D8B; 
+   font-size: 25px;
+   color:peachpuff;
+   text-align: center;
+} 
+</style>
+
+  </head>
+  <body>
+    <div id="loading">   </div>
+
+    <nav class="navbar navbar-expand-sm navbar-custom bg-primary  fixed-top">
+      <!-- Brand/logo       <a class="navbar-brand" href="http://jatayuv2.igib.res.in/">
+        <img src="/static/images/jatayu1.png" alt="logo" style="width:60px; "> 
+      </a>-->
+
+      
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <!--   <li class="nav-item">
+             <a class="nav-link" href="http://jatayuv2.igib.res.in/" style="color: blueviolet;font-size: 30px;">  CriSNPr</a>
+           </li>-->
+   
+           <li class="nav-item">
+             <a class="nav-link" href="/static/images/JATAYU_2_instructions.pdf" style="color: #772953;font-size: 30px;">Instructions</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="/static/images/JATAYU_2_instructions.pdf" style="color: #772953;font-size: 30px;">Contact Us</a>
+           </li>
+   
+           <!--<li class="nav-item">
+             <a class="nav-link" href="#"></a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="#"></a>
+           </li> -->
+         </ul>
+    </nav>
+
+       
+    <div class="s010">
+    
+        <form method="POST"  action="/seq" role="form2" enctype="multipart/form-data">
+     
+          {{ form.csrf_token }}
+          <fieldset>
+
+          <div class="inner-form">
+<!--            <p style="color:red;font-size: 21px;font-weight: bold;">Enter Mutation :</p>-->
+                     
+          <div class="advance-search">
+                <!--<input type="text" name="sequence" id="sequence" value="GTCGCAGGTAAATACACAGAAAGAA" minlength="20" maxlength="30" required/>-->
+            <div class="row mb-3">
+
+                <label for="sequence" style="font-size: 1.1vw;color:925375;font-family: Poppins;">Enter the Genomic Sequence(length : 20 to 30 bp)</label> 
+
+                <!--"(ORF1ab|^S|ORF3a|E|M|ORF6|ORF7a|ORF8|N|ORF10)"  GTCGCAGGTAAATACACAGAAAGAA-->
+              <input id="sequence" type="sequence" name="sequence" id="sequence" placeholder="ACACCTTGTAATGGTGTTGAAGG" value="ACACCTTGTAATGGTGTTGAAGG" minlength="20" maxlength="30" required  style="  background: linear-gradient(to right, #E95420 0%, #EB6536 28%, #925375 100%,#772953 100% );
+              color:peachpuff;font-size: 1vw;"/> 
+            </div>
+          <div class="row mb-3" >
+            <div class="col">  
+              <label for="position" style="font-size: 1.1vw;color:925375;font-family: Poppins;text-align: center;">Position</label><br>
+
+              <select id="position" type="position" name="position" value="19" style="  background: linear-gradient(to right, #E95420 0%, #EB6536 28%, #925375 100%,#772953 100% );
+              color:peachpuff;font-size: 1.1vw;text-align: center;" >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option  >4  </option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option selected>19</option>
+                <option>20</option> 
+                <option>21</option> 
+                <option>22</option> 
+                <option>23</option> 
+                <option>24</option> 
+                <option>25</option> 
+                <option>26</option> 
+                <option>27</option> 
+                <option>28</option> 
+                <option>29</option> 
+                <option>30</option> 
+                
+
+              </select>
+          
+              </div>   
+            
+               <div class="col">
+                
+                    <!--<h1> result</h1>-->
+                  
+                    <label for="variation" style="font-size: 1.1vw;color:925375;font-family: Poppins;text-align: left;">Type of Mutation</label>
+                    <select class="options" name="variation" id="variation" style="  background: linear-gradient(to right, #E95420 0%, #EB6536 28%, #925375 100%,#772953 100% );
+                    color:peachpuff;font-size: 1.1vw;text-align: center;">
+                        <option selected>A</option>
+                        <option>C</option>
+                        <option>G</option>
+                        <option>T</option>
+                        
+                      </select>
+                  
+                         
+              </div>     
+              <div class="col">
+
+                  <label for="organism" style="font-size: 1.1vw;color:925375;font-family: Poppins;text-align: center;">Organism</label>
+                  <select class="options"  name="organism" id="organism" style="  background: linear-gradient(to right, #E95420 0%, #EB6536 28%, #925375 100%,#772953 100% );
+                  color:peachpuff;font-size: 1.1vw;text-align: center;">
+                      <option >Homo Sapiens</option>
+
+<option selected>Sars-CoV-2</option>
+
+
+                      
+                     
+                    </select>
+                       
+              </div>
+            </div>
+<!--
+            <span class="desc" style="font-size: 1.1vw;color:925375;font-family: Poppins;">EXAMPLE SEARCH</span>
+            <div class="row">
+           
+                 <input type="button" class="click_me" data-value="S_E484K" value="S_E484K"/> 
+                  <input type="button" class="click_me" data-value="S_N501Y" value="S_N501Y"/> 
+                  <input type="button" class="click_me" data-value="S_D614G" value="S_D614G"/> 
+                  <input type="button" class="click_me" data-value="S_L452R" value="S_L452R"/> 
+
+                  
+            </div>-->
+          </div>
+
+               <div class="input-field">
+                
+                <div class="group-btn">
+                  <button class="btn-delete" id="delete" style="margin-top: 10px;">CLEAR</button>
+                  <button class="btn-search" onclick="loading();">SEARCH</button>
+                   
+                  {% for category, message in get_flashed_messages(with_categories=true) %}
+                  <p class="alert-{{ category }}" >{{ message }}</p>
+
+                    {% endfor %}   
+                </div>
+
+
+              </div>
+          </div>
+          
+        </fieldset>
+      </form>
+  
+      <div class="footer">
+        <span  >Powered by RNA Biology Lab, CSIR-IGIB</span> <br>
+        <!--<span style="font-size: 20px;">Visitors : {{visitors}}</span>-->
+        </div>
+    
+  </div>
+  <script type="text/javascript">// <![CDATA[
+    function loading(){
+      $("#loading").show();
+
+
+      $("#inner-form").hide();       
+    }
+// ]]></script>
+  </body> 
+</html>

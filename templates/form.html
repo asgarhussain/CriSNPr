@@ -1,0 +1,252 @@
+<!--{% from "_render_field.html" import render_field, render_radio_fields %}-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!--    <title>JATAYU</title>-->
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/static/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+   <!--  <link href="{{ url_for('static',filename='fonts/material-icon/css/material-design-iconic-font.min.css' )}}" rel="stylesheet" >
+
+    Main css 
+     <link  href="{{ url_for('static', filename='css/style.css' )}}"  rel="stylesheet" >
+
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    
+    <link href="{{ url_for('static', filename='theme.css') }}" rel="stylesheet">-->
+<style>
+
+.button {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+  border-radius: 12px;
+  margin: 40px 180px;
+
+
+}
+
+.button1:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+  border-radius: 12px;
+  margin: 40px -120px;
+
+
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+
+
+
+div#loading {
+display: none;
+  width: 500px;
+  height:180px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+  background: url(/static/Vanilla-2s-289px.gif) no-repeat;
+ position: absolute;
+  cursor: wait;
+ 
+}
+
+
+
+
+</style>
+
+
+
+  </head>
+
+  <body>
+    <div id="loading">   </div>
+   <!-- <div id="geeks"> 
+      <span>s</span> 
+      <span>g</span> 
+      <span>R</span> 
+      <span>N</span> 
+      <span>A</span> 
+      <span>D</span> 
+      <span>E</span> 
+      <span>S</span> 
+      <span>I</span> 
+      <span>G</span> 
+      <span>N</span> 
+      <span>I</span> 
+      <span>N</span>
+      <span>P</span>
+      <span>R</span>
+      <span>O</span>
+      <span>C</span>
+      <span>E</span>
+      <span>S</span>
+      <span>S</span>
+            
+      
+  </div> -->
+
+    <div class="main">
+
+      <div class="container">
+          <div class="signup-content">
+              <div class="signup-desc">
+                  <div class="signup-desc-content">
+                      <h2>JATAYU</h2>
+                      
+                      <img src="/static/images/IMG_0233.png_nm1.png" alt="" class="signup-img">
+                  </div>
+              </div>
+              <div class="signup-form-conent">
+                
+                <form method="POST" id="signup-form" action="/" class="signup-form" role="form" enctype="multipart/form-data">
+                  
+                  <h3></h3>
+             
+                  <div class="form-group">
+                    <input type="text" name="sequence" id="sequence" value="GTCGCAGGTAAATACACAGAAAGAA" minlength="20" maxlength="30" required/>
+                    <label for="sequence">Enter the Genomic Sequence with mutation followed by NNGG (length : 20 to 30 bp)</label>
+                   </div>
+                   <div class="form-group">     
+                    <label for="position">Position</label>
+                    <select class="options"  name="position" id="position" value="4" >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option selected >4  </option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option> 
+                        <option>21</option> 
+                        <option>22</option> 
+                        <option>23</option> 
+                        <option>24</option> 
+                        <option>25</option> 
+                        <option>26</option> 
+                        <option>27</option> 
+                        <option>28</option> 
+                        <option>29</option> 
+                        <option>30</option> 
+                        
+
+                      </select>
+                         
+                </div>
+                <div class="form-group">
+                
+                  <!--<h1> result</h1>-->
+                
+                  <label for="variation">Type of Mutation</label>
+                  <select class="options" name="variation" id="variation" >
+                      <option selected>A</option>
+                      <option>C</option>
+                      <option>G</option>
+                      <option>T</option>
+                      
+                    </select>
+                    {% for category, message in get_flashed_messages(with_categories=true) %}
+                    <p class="{{ category }}">{{ message }}</p>
+                      {% endfor %}   
+                       
+              </div>
+              
+              <div class="form-group">
+
+                  <label for="organism">Organism</label>
+                  <select class="options"  name="organism" id="organism">
+                      <option>Homo Sapiens</option>
+                     
+                    </select>
+                       
+              </div>
+
+
+
+
+                <!--  {{ render_field(form.sequence, placeholder=form.sequence.label.text) }}
+                  {{ render_field(form.position, placeholder=form.position.label.text) }}
+                  {{ render_field(form.variation,placeholder=form.variation.label.text) }}
+                  {{ render_field(form.organism,placeholder=form.organism.label.text) }}-->
+                  
+                  
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="reset"  class="button button1">Reset</button>
+                      <button type="submit" class="button button2" onclick="loading();" >Design sgRNA</button>
+                    </div>
+                  </div>
+                </fieldset>
+                <h2 style="color: red;font-size: 21px;font-weight: bold; font-family: Poppins;padding-bottom: 5px;padding-top: 100px;">Instructions : </h2>
+                <p style="color: blue;font-size: 18px;font-weight: bold; font-family: Poppins;">1. Users need to provide human genomic sequences. </p>
+                <p style="color: blue;font-size: 18px;font-weight: bold; font-family: Poppins;">2. The mutation position should be followed by NNGG (N=Any Nucleotide). </p>
+ 
+              </form>
+            </div>
+          </div>
+
+    </div> <!-- /container -->
+
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+
+    <script type="text/javascript">// <![CDATA[
+      function loading(){
+        $("#loading").show();
+
+
+          $("#main").hide();       
+      }
+// ]]></script>
+
+  </body>
+</html>

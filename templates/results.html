@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>JATAYU</title>
+
+    <!-- Bootstrap core CSS -->
+    <!--<link rel="stylesheet" href="/static/fonts/material-icon/css/material-design-iconic-font.min.css">-->
+
+    <!-- Main css -->
+   
+<link rel="stylesheet" href="{{ url_for('static', filename='fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+
+ <link rel=stylesheet href="{{ url_for('static', filename='css/style.css') }}">
+
+ <!--  <link rel="stylesheet" href="/static/css/style.css"> -->
+<style>
+
+table.dataframe, .dataframe th, .dataframe td {
+    border:1px solid ;
+    border-bottom: 1px solid #C8C8C8;
+    border-collapse: collapse;
+    text-align:left;
+    padding: 10px;
+    margin-bottom: 40px;
+    font-size: 0.9em;
+}
+
+
+.sgrna th  {
+background-color: #77dd77;
+color: #999;
+}
+
+.sgrna td  {
+color: blue;
+}
+
+.primer th {
+background-color: #77dd77;
+color: #999;
+}
+
+.primer td {
+
+color: blue;
+}
+
+tr:nth-child(odd)		{ background-color:#eee; }
+tr:nth-child(even)	{ background-color:#fff; }
+
+.primer tbody>tr>:nth-child(3),.primer tbody>tr>:nth-child(4){
+ color:goldenrod;
+
+}
+
+
+.primer tbody>tr>:nth-child(1),.primer tbody>tr>:nth-child(2)   {
+ color:violet;
+
+}
+
+
+
+
+tr:hover            { background-color: #ffff99;}
+
+
+
+
+</style>
+  </head>
+
+  <body>
+    <div class="main">
+
+      <div class="container">
+          <div class="signup-content">
+              <div class="signup-desc">
+                  <div class="signup-desc-content">
+                      <h2>JATAYU</h2>
+                      
+                      <img src="/static/images/IMG_0233.png_nm1.png" alt="" class="signup-img">
+                  </div>
+              </div>
+              <div class="signup-form-conent">
+
+          <div style="overflow: hidden;padding-top: 70px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;">
+            <p style="color:#999;float: left;" > Sequence:</p>      
+            <p id="Sequence" class="Sequence" style="color:blue;float: left;padding-left: 10px;font-size: 21px;" > {{ sequence }}</p>
+            
+
+              </div>      
+
+              <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;">
+
+              <p style="color:#999;float: left;" > Position:</p>      
+              <p id="Position" class="Position" style="color:blue;float: left;padding-left: 10px;font-size: 21px;" > {{position}}  </p>
+              
+              </div>
+               
+              <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;">
+
+                <p style="color:#999;float: left;" > Type of Mutation:</p>      
+                <p id="Mutation" class="Mutation" style="color:red;float: left;padding-left: 10px;font-size: 21px;" > {{ variation }}</p>
+                
+                </div>
+              
+              <div style="overflow: hidden;padding-top: 10px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;">
+
+                <p style="color:#999;float: left;" > Disease Sequence:</p>      
+                <p id="muatated" class="muatated"  style="color:blue;float: left;padding-left: 10px;font-size: 21px;" >  </p>
+                
+                </div>
+                       
+                <!-- <h1>Organism: {{ organism }}</h1>-->
+        <div style="overflow: hidden;padding-top: 5px; padding-left: 40px;font-size: 20px; font-weight: bold; font-family: Poppins;">
+      
+          {% for table in tables %}
+          <h2 style="color: #377ba8;margin: 0;font-size: 1.2em;padding-bottom: 5px;">{{titles[loop.index]}}</h2>
+          {{ table|safe }}
+            <!-- <h4 style="color:blue;">   </h4>-->
+                   
+            {% endfor %}
+             <p style="color: red;"> Select any primer set from the above table.  </p>   
+          </div>         
+    </div> <!--signup-content -->
+    </div> <!-- /container -->
+
+</div>
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+
+  <script>
+ (function  ($) {
+      var sequence2 = {{ sequence|tojson }};
+      var posi1 = {{ position|tojson }};
+      var mutation = {{ variation_base|tojson }};
+      var ref=sequence2.substr(posi1-1, 1);
+      var muta_type = ref.fontcolor("blue") + ">".fontcolor("black") + mutation.fontcolor("red");
+      sequence2 = sequence2.substr(0, posi1-1) + mutation.fontcolor("red") + sequence2.substr(posi1-1 + 1);
+      $("#Mutation").html(muta_type);
+      $("#muatated").html(sequence2);
+
+  
+
+
+ }
+  )(jQuery);
+</script>
+
+
+
+  </body>
+</html>
